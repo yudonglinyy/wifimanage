@@ -1,0 +1,125 @@
+checkgateway.c:
+	main： 
+		调用getgateway()确认网关，如果有结果则写入/tmp/tmp_gateway，没有直接退出。利用crontab定时执行
+
+cmdcall.c:
+	char* getCmdResult(const char *cmd, char *resultStr, int len) :
+		获取shell结果，存入resultStr，没有结果会报错log并退出。
+		返回resultStr这个指针
+
+	int cmdcall_no_output(const char *str) ：
+		内部调用system()，关闭标准输出和错误输出。
+
+dail.c:
+	main:
+		agrv[1]: json格式 {"argc": xx, "argv": {"bssid": "xx:xx:xx:xx:xx:xx"}} :
+		json的argc：0	改变进程所在路径：/etc/config/conf/wifi/
+						把目录下所有文件尝试拨号
+					1	改变进程所在路径：/tmp/wf/
+						bssid字段为文件名，尝试拨号
+
+	bool daliafile(const char *filename, const char *wlanstr) :
+		filename: 文件路径
+		wlanstr:  wlanname
+		返回true,false
+
+	bool getIpOnline(const char *wlanstr):
+		判断wlanstr是否有ip
+
+	list_t *get_wifiscan()：
+		内部通过exec_wifiscan()调用wifiscan，获取当前的wifi，返回一个列表
+
+	int exec_wifiscan(char *buffer, int len) :
+		执行wifiscan，结果存入buffer，正常退出返回非零值
+
+getgateway.c：
+	char *getgateway()：
+		内部调用from_type_get_gateway() 检测获取默认网关，并返回。
+
+	char *from_type_get_gateway(char *ifname)：
+		根据ifname代表的类型获取相对于的网关，并返回
+
+getphpconfig.c:
+	main():
+		获取/etc/config/router中的配置信息并写入/web/config.php
+
+getwlanname.c:
+	char* getwlanname():
+		获取/sys/device/%s/net目录下第一个wlanXX的名字，类似wlan0
+		其中%s为getwifidevice()得到的radioXX，然后在wireless文件中取相应的path
+
+	bool getwifidevice(char *device, int len)：
+		uci get router.wifi.sta 获取设备名字，类似radio0
+
+hidemon.c:
+	main:
+		agrv[1]: json格式 {"argc": 3, "argv": {"ssid": "YOUR-SSID", "encryption": "psk", "key": "YOUR-PASSWORD"}}:
+
+led.c:
+	main:
+		循环执行lanLed() wifiLed() wanLed() threeGLed();
+
+setgateway.c：
+	main：
+		通过调用getgateway()返回的网关，判断是否解析网址成功，循环执行直到成功，最后写入/tmp/tmp_gateway
+
+strip.c：
+	void strip(const char *strIn, char *strOut)：
+		过滤前后的空白字符，不过滤中间的字符，输出结果strOut，结尾带'\0'。全是空白字符则strOut是一个'\0'的字符串
+
+	char *safe_trip(const char *src)：
+		安全过滤，先调用strip()过滤，在判断字符串是否包含( isspace(*p) || *p == '\'' || *p == '\\') ,有报错。
+		判断是否有带'\',有则再加多一个反斜杠
+
+traversalfile.c：
+	list_t *traversal_file(const char *path)：
+		参数path：需要查询的目录,path为空或者路径错误则报错
+		返回目录下不包含以'.'开头的文件的一个列表
+
+	int copyfile(const char *src, const char *des)：
+		复制文件，错误返回-1，正确返回0
+
+wifichecker.c:
+	main：
+		判断wireless文件中所有path是否存在，存在disabled=0，否则为1。需要修改则network reload
+
+	int get_device_total_num():
+		获取/etc/config/wireless中radioXX的数量，并返回
+
+	bool match_bool(char *src, regex_t *preg) :
+		参数src: 需要匹配的字符串
+			preg：已经编译好的regex_t类型的指针变量
+
+wifiedit.c:
+	main:
+		agrv[1]: json格式 {"argc": 5/6, "argv": {"ssid":"xxx","action":"xxx","device":"radioXX","bssid":"xx:xx:xx:xx:xx:xx","encryption": "psk", "key": "YOUR-PASSWORD"}}
+
+		action: 
+			del: 删除ssid对应的ssid文件
+			new：在/tmp/wf/下新建一个对应ssid的文件
+			conn:杀死wifimon，执行dail
+
+		device:
+			连接时指定的device，会写入/etc/config/router,置enable为1
+
+	void newSsid(const char *wifiPath, const char *bssid, const char *device, const char *ssid, const char *encryption, const char *key)：
+		参数wifiPath：新建文件的存放路径
+		生成一个对应的ssid文件
+
+wifimon.c:
+	main:
+		循环监控ip是否在线，不在线时退出并执行dail，只参数拨号"new"文件
+
+wifiscan.c:
+	main:
+		agrv[1]: json格式 {"argc": 1, "argv": {"device": "wlanXX"}}"
+		调用getIwScanJson()并打印
+		
+	char* getIwScanJson(FILE *pIwScan):
+		获取iw的执行结果
+
+
+
+wifiscan:	rev:xxxx
+			return:xxx
+wifiedit:

@@ -1,0 +1,28 @@
+base-files busybox chat comgt dnsmasq-full firewall fstools hostapd-common ip iptables iptables-mod-conntrack-extra iptables-mod-ipopt iptables-mod-nat-extra iw jshn jsonfilter kernel kmod-ath kmod-ath9k kmod-ath9k-common kmod-cfg80211 kmod-crypto-aead kmod-crypto-authenc kmod-crypto-cbc kmod-crypto-deflate kmod-crypto-des kmod-crypto-ecb kmod-crypto-hash kmod-crypto-hmac kmod-crypto-iv kmod-crypto-manager kmod-crypto-md5 kmod-crypto-pcompress kmod-crypto-rng kmod-crypto-sha1 kmod-crypto-sha256 kmod-crypto-wq kmod-dnsresolver kmod-fs-nfs kmod-fs-nfs-common kmod-gpio-button-hotplug kmod-ifb kmod-ipt-conntrack kmod-ipt-conntrack-extra kmod-ipt-core kmod-ipt-ipopt kmod-ipt-nat kmod-ipt-nat-extra kmod-iptunnel kmod-iptunnel4 kmod-lib-crc-ccitt kmod-lib-crc-itu-t kmod-lib-crc16 kmod-lib-textsearch kmod-libphy kmod-mac80211 kmod-mii kmod-mppe kmod-nf-conntrack kmod-nf-ipt kmod-nf-nat kmod-nf-nathelper-extra
+
+
+
+kmod-nls-base kmod-ppp kmod-sched-core kmod-slhc
+ kmod-tun kmod-udptunnel4
+  libblobmsg-json libbz2 libc libdb47 libexpat libffi libgcc libgdbm libgmp libip4tc libjson-c libjson-script liblzo libncurses libnl-tiny libopenssl libpcap libpcre libpthread librt libsqlite3 libubox libubus libuci libuclient libustream-openssl libxml2 libxtables mtd netifd odhcpd ppp ppp-mod-pppoe procd resolveip swconfig tc
+ terminfo uboot-envtools ubox ubus ubusd uci uclient-fetch uhttpd umbim uqmi usign wpad-mini wwan zlib kmod-rt2800-lib 
+kmod-rt2800-usb kmod-rt2x00-lib kmod-rt2x00-usb 
+kmod-usb-acm kmod-usb-core kmod-usb-net kmod-usb-net-asix kmod-usb-net-asix-ax88179 kmod-usb-net-cdc-eem kmod-usb-net-cdc-ether kmod-usb-net-cdc-mbim kmod-usb-net-cdc-ncm kmod-usb-net-cdc-subset kmod-usb-net-dm9601-ether kmod-usb-net-hso kmod-usb-net-huawei-cdc-ncm kmod-usb-net-ipheth kmod-usb-net-kalmia kmod-usb-net-kaweth kmod-usb-net-mcs7830 kmod-usb-net-pegasus kmod-usb-net-qmi-wwan kmod-usb-net-rndis kmod-usb-net-rtl8150 kmod-usb-net-rtl8152 kmod-usb-net-sierrawireless kmod-usb-net-smsc95xx kmod-usb-net-sr9700 kmod-usb-ohci kmod-usb-serial kmod-usb-serial-ark3116 kmod-usb-serial-belkin kmod-usb-serial-ch341 kmod-usb-serial-cp210x kmod-usb-serial-cypress-m8 kmod-usb-serial-dmx_usb_module kmod-usb-serial-ftdi kmod-usb-serial-garmin kmod-usb-serial-ipw kmod-usb-serial-keyspan kmod-usb-serial-mct kmod-usb-serial-mos7720 kmod-usb-serial-option kmod-usb-serial-oti6858 kmod-usb-serial-pl2303 kmod-usb-serial-qualcomm kmod-usb-serial-sierrawireless kmod-usb-serial-simple kmod-usb-serial-ti-usb kmod-usb-serial-visor kmod-usb-serial-wwan kmod-usb-serial-xr_usb_serial_common kmod-usb-uhci kmod-usb-wdm kmod-usb2 libusb-1.0 rt2800-usb-firmware usb-modeswitch
+
+
+
+
+strongswan strongswan-charon strongswan-default strongswan-mod-aes strongswan-mod-attr strongswan-mod-connmark strongswan-mod-constraints strongswan-mod-des strongswan-mod-dnskey strongswan-mod-fips-prf strongswan-mod-gmp strongswan-mod-hmac strongswan-mod-kernel-netlink strongswan-mod-md5 strongswan-mod-nonce strongswan-mod-pem strongswan-mod-pgp strongswan-mod-pkcs1 strongswan-mod-pubkey strongswan-mod-random strongswan-mod-rc2 strongswan-mod-resolve strongswan-mod-revocation strongswan-mod-sha1 strongswan-mod-sha2 strongswan-mod-socket-default strongswan-mod-sshkey strongswan-mod-stroke strongswan-mod-updown strongswan-mod-x509 strongswan-mod-xauth-generic strongswan-mod-xcbc      
+
+strongswan-utils
+
+
+
+opkg dropbear
+
+kmod-ppp kmod-mppe ppp-mod-pptp kmod-gre
+
+openvpn-openssl obfsproxy  //not necc
+
+
+python python-base python-codecs python-compiler python-ctypes python-db python-decimal python-distutils python-email python-gdbm python-multiprocessing python-ncurses python-openssl python-unittest python-xml twisted zope-interface
