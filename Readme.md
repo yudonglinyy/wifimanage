@@ -1,6 +1,6 @@
-#API文档
+# API文档
 
-##目录
+## 目录
 
 * [config_editor](#config_editor)
 * [dial](#dial)
@@ -274,7 +274,7 @@ apcheck:
 
 > none
 
-###return
+### return
 > 0		succ
 >
 > 1		fail		{"status":XX,"msg":"XXX"}
